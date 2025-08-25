@@ -15,7 +15,7 @@ export default function EmailDebugger() {
       const data = await response.json();
       setDebugInfo(data);
     } catch (error) {
-      setMessage(`Error: ${error.message}`);
+      setMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
     setLoading(false);
   };
@@ -37,7 +37,7 @@ export default function EmailDebugger() {
       const data = await response.json();
       setMessage(data.success ? data.message : `Error: ${data.error}`);
     } catch (error) {
-      setMessage(`Error: ${error.message}`);
+      setMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
     setLoading(false);
   };
@@ -55,7 +55,7 @@ export default function EmailDebugger() {
       setMessage(data.success ? data.message : `Error: ${data.error}`);
       fetchDebugInfo(); // Refresh debug info
     } catch (error) {
-      setMessage(`Error: ${error.message}`);
+      setMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
     setLoading(false);
   };
